@@ -843,7 +843,7 @@
       event._attach.forEach(function(obj) {
         xtag.removeEvent(element, obj);
       });
-      element.removeEventListener(event.type, event.stack);
+      element.removeEventListener(event.type, event.stack, false);
     },
 
     removeEvents: function(element, obj){
@@ -871,7 +871,6 @@
 
       element.dispatchEvent(event);
     }
-
   };
 
   if (typeof define === 'function' && define.amd) define(xtag);
@@ -880,6 +879,6 @@
 
   doc.addEventListener('WebComponentsReady', function(){
     xtag.fireEvent(doc.body, 'DOMComponentsLoaded');
-  });
+  }, false);
 
 })();
